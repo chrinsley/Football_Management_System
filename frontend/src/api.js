@@ -1,9 +1,13 @@
 const API = '/api'
 
 async function request(url, options = {}) {
+
   const response = await fetch(`${API}${url}`, {
-    headers: { 'Content-Type': 'application/json' },
-    ...options
+    ...options,
+    headers: {
+      'Content-Type': 'application/json',
+      ...options.headers
+    }
   })
 
   if (!response.ok) {
